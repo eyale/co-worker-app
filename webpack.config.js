@@ -1,5 +1,6 @@
-var path = require('path')
-var webpack = require('webpack')
+var path             = require('path')
+var webpack          = require('webpack')
+var NpmInstallPlugin = require('npm-install-webpack-plugin')
 
 module.exports = {
   //devtool указываем, что нам нужен source-map 
@@ -22,7 +23,8 @@ module.exports = {
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new NpmInstallPlugin()
   ],
   module: {
     preloaders: [{
