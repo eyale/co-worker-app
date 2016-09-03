@@ -1,15 +1,11 @@
 //here we are importing the dependencies from libraries
 // {} -> mean's that import's goes partly from whole the labrary
-
 import React from 'react'
 import { render } from 'react-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import App from './containers/App'
-
-// cashing store to use it after
-const store = createStore(()=> {}, {})
-
+import store from './store/configureStore'
 
 //the <Provider></Provider> component
 //is from Redux
