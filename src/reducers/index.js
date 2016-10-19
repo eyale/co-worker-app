@@ -1,5 +1,21 @@
-import {combineReducers} from 'redux'
-import user from './users'
-import page from './page'
+import { combineReducers } from 'redux';
 
-export default combineReducers({user, page})
+import todos from './todos';
+import filter from './filter';
+
+// const combineReducers = reducers => {
+//     return (state = {}, action) =>
+//         Object.keys(reducers).reduce(
+//             (nextState, key) => {
+//                 nextState[key] = reducers[key] (
+//                     state[key],
+//                     action
+//                 );
+//
+//                 return nextState;
+//             },
+//             {}
+//         );
+// };
+
+export default combineReducers({ todos, filter });

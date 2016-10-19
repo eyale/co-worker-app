@@ -1,0 +1,27 @@
+.root {
+    padding: 16px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;	
+    padding: 16px 0 16px 40px;
+}
+
+.completed {
+    composes: root;
+
+    text-decoration: line-through;
+    font-style: italic;
+    color: lightgrey;
+}
+
+button {
+	position: relative;
+    left: 415px;
+  	bottom: 34px;
+}
+section {
+    height: 56px;
+}
+section:nth-child(2n+1) {
+    background: rgba(0, 0, 0, 0.1);
+}

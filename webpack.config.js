@@ -1,42 +1,55 @@
-var path             = require('path')
-var webpack          = require('webpack')
-var NpmInstallPlugin = require('npm-install-webpack-plugin')
+const webpack = require('webpack');
+const path = require('path');
+
+const NODE_ENV = process.env.NODE_ENV || 'development';
+const isDevelopment = NODE_ENV === 'development';
 
 module.exports = {
-  //devtool указываем, что нам нужен source-map 
-  //для отладки кода с парой настроек
-  devtool: 'cheap-module-eval-source-map',
-  //entry - указывается откуда webpack'у начинать сборку
-  entry: [
-    //нужна нам для поддержки hot-reload, 
-    //вместе с одним из плагинов - webpack.HotModuleReplacementPlugin
-    'webpack-hot-middleware/client',
-    'babel-polyfill',
-    './src/index'
-  ],
-  //output - куда сгенерировать
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
-  },
-  plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new NpmInstallPlugin()
-  ],
-  module: {
-    preloaders: [{
-      test: '/\.js$/',
-      loaders:['eslint'],
-      include: [path.resolve(__dirname, "src")]
-    }],
-    loaders: [{
-      loaders: ['react-hot', 'babel-loader'], //добавили loader 'react-hot'
-      include: [path.resolve(__dirname, "src")],
-      test: /\.js$/,
-      plugins: ['transform-runtime'],
-    }]
-  }
-}
+    entry: './src/main.js',
+    output: {
+        path: path.resolve(__dirname, 'public', 'build'),
+        publicPath: '/build/',
+        filename: 'bundle.js'
+    },
+    watch: isDevelopment,
+    devtool: isDevelopment && 'eval-source-map',
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: ['react-hot', 'babel']
+            },
+            {
+                test: /\.less$/,
+                exclude: /node_modules/,
+                use: [
+                    'style',
+                    'css?modules&importLoaders=1&localIdentName=__[name]__[local]___[hash:base64:5]',
+                    {
+                        loader: 'postcss',
+                        options: {
+                            plugins() {
+                                return [
+                                    require('autoprefixer')
+                                ];
+                            }
+                        }
+                    },
+                    'less'
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: ['style', 'css']
+            }
+        ]
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify(NODE_ENV)
+            }
+        })
+    ]
+};
