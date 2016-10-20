@@ -50,7 +50,6 @@ export default function todos(state = [], action) {
         }
 
         case 'DELETE_TODO': {
-            console.dir(action);
             return state.filter(item => {
                 return item.id !== action.id
             });
