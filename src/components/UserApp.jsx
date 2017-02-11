@@ -9,7 +9,6 @@ import {
   ,Container
   ,Divider
   ,Icon
-  ,Image
 } from 'semantic-ui-react'
 
 export default class UserApp extends Component {
