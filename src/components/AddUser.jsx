@@ -59,14 +59,14 @@ export default class AddTodo extends Component {
             <Segment>
               <Input
                 placeholder='Name'
-                value={this.state.text}
-                onChange={this.handleTextChange}
+                value={this.state.name}
+                onChange={this.handleNameChange}
               />
             </Segment>
             <Segment>
               <Input
                 placeholder='Surname'
-                value={this.state.text}
+                value={this.state.surname}
                 onChange={this.handleSurnameChange}
               />
             </Segment>

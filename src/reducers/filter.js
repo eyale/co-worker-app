@@ -3,7 +3,6 @@ export default function filter(state = 'SHOW_ALL', action) {
         case 'SET_FILTER': {
             return action.filter;
         }
-
         default: {
             return state;
         }

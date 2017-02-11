@@ -1,8 +1,9 @@
-export const addUser = (text, email) => {
+export const addUser = (name, surname, email) => {
     return {
         type: 'ADD_USER',
         id: Date.now(),
-        text,
+        name,
+        surname,
         email
     };
 };

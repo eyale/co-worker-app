@@ -13,14 +13,21 @@ import {
 } from 'semantic-ui-react'
 
 export default class UserApp extends Component {
+
     render() {
         return (
           <Container textAlign='left'>
+            <Header as='h5'></Header>
               <Header
-                as='h1'
+                as='h5'
                 color='blue'
               >
-                <Icon name='users' circular />
+                <Icon
+                  name='users'
+                  circular
+                  color='blue'
+                  inverted
+                />
                   MyLo
               </Header>
               <AddUser />

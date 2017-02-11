@@ -16,7 +16,8 @@ export default class TodoList extends Component {
                         <User
                             key={user.id}
                             id={user.id}
-                            text={user.text}
+                            name={user.name}
+                            surname={user.surname}
                             email={user.email}
                             completed={user.completed}
                             onToggle={() => this.props.toggleUser(user.id)}

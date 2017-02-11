@@ -1,20 +1,37 @@
 import React, { Component } from 'react';
 
-import styles from './User.less';
+import {
+  Card
+  , Image
+  , Icon
+  , Dimmer
+} from 'semantic-ui-react'
 
 export default class User extends Component {
     render() {
-        const { text, email, completed, onToggle } = this.props;
+        const { name, surname, email, completed, onToggle } = this.props;
 
         return (
-            <div
-                className={completed ? styles.completed : styles.root}
-                onClick={onToggle}
-            >   
-                <h6>The name:</h6>
-                <h2>{text}</h2>
-                <p>The email: {email}</p>
-            </div>
+            <Card
+              color={completed?'blue':''}
+              onClick={onToggle}
+            >
+              <Image src='http://semantic-ui.com/images/avatar2/large/matthew.png' />
+              <Card.Content>
+                <Card.Header>
+                  {`${surname} ${name}`}
+                </Card.Header>
+                <Card.Meta>
+                    {'Alabama'}
+                </Card.Meta>
+                <Card.Description>
+                  {`${name} is a FrontEnd`}
+                </Card.Description>
+              </Card.Content>
+              <Card.Content extra>
+                <a><Icon name='mail' />{email}</a>
+              </Card.Content>
+            </Card>
         );
     }
 }
