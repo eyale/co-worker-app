@@ -4,23 +4,29 @@ import TodoList from './TodoList.jsx';
 import AddUser from './AddUser.jsx';
 import Footer from './Footer.jsx';
 
-import styles from './UserApp.less';
+import {
+  Header
+  ,Container
+  ,Divider
+  ,Icon
+  ,Image
+} from 'semantic-ui-react'
 
 export default class UserApp extends Component {
     render() {
         return (
-            <div className={styles.root}>
-                <div className={styles.container}>
-                    <h2 className={styles.header}>MyLo</h2>
-
-                    <div className={styles.app}>
-                        <AddUser />
-                        <Footer />
-                        <TodoList />
-
-                    </div>
-                </div>
-            </div>
+          <Container textAlign='left'>
+              <Header
+                as='h1'
+                color='blue'
+              >
+                <Icon name='users' circular />
+                  MyLo
+              </Header>
+              <AddUser />
+              <Footer />
+              <TodoList />
+          </Container>
         );
     }
 }
