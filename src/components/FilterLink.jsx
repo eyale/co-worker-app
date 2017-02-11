@@ -5,7 +5,8 @@ import { setFilter } from '../actions';
 
 import styles from './FilterLink.less';
 
-@connect(mapStateToProps, mapDisplatchToProps)
+@connect(mapStateToProps, mapDispatchToProps)
+
 export default class FilterLink extends Component {
     render() {
         const { active, children, onClick } = this.props;
@@ -24,7 +25,7 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-function mapDisplatchToProps(dispatch, ownProps) {
+function mapDispatchToProps(dispatch, ownProps) {
     return {
         onClick: () => dispatch(setFilter(ownProps.filter))
     };

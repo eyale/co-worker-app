@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import TodoApp from './components/TodoApp.jsx';
+import UserApp from './components/UserApp.jsx';
 
 import store from './store';
 
@@ -12,7 +12,7 @@ import './assets/main.css';
 
 ReactDOM.render(
     <Provider store={store}>
-        <TodoApp />
+        <UserApp />
     </Provider>,
     document.getElementById('root')
 );

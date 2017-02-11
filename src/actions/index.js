@@ -1,27 +1,15 @@
-export const addTodo = text => {
+export const addUser = (text, email) => {
     return {
-        type: 'ADD_TODO',
+        type: 'ADD_USER',
         id: Date.now(),
-        text
+        text,
+        email
     };
 };
 
-export const toggleTodo = id => {
+export const toggleUser = id => {
     return {
-        type: 'TOGGLE_TODO',
-        id
-    };
-};
-
-export const toggleAllTodo = () => {
-    return {
-        type: 'TOGGLE_ALL_TODO'
-    };
-};
-
-export const deleteTodo = id => {
-    return {
-        type: 'DELETE_TODO',
+        type: 'TOGGLE_USER',
         id
     };
 };

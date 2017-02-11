@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { toggleTodo, deleteTodo } from '../actions';
+import { toggleUser } from '../actions';
 
-import Todo from './Todo.jsx';
+import User from './User.jsx';
 
-@connect(mapStateToProps, { toggleTodo, deleteTodo })
+@connect(mapStateToProps, { toggleUser })
 export default class TodoList extends Component {
+    // what happens here ???
     render() {
         return (
             <div className="base">
                 {
-                    this.props.todos.map(todo =>
-                        <Todo
-                            key={todo.id}
-                            id={todo.id}
-                            text={todo.text}
-                            completed={todo.completed}
-                            onToggle={() => this.props.toggleTodo(todo.id)}
-                            onDelete={() => this.props.deleteTodo(todo.id)}
+                    this.props.users.map(user =>
+                        <User
+                            key={user.id}
+                            id={user.id}
+                            text={user.text}
+                            email={user.email}
+                            completed={user.completed}
+                            onToggle={() => this.props.toggleUser(user.id)}
                         />
                     )
                 }
@@ -27,21 +28,21 @@ export default class TodoList extends Component {
     }
 }
 
-function getVisibleTodos(todos, filter) {
+function getVisibleTodos(users, filter) {
     switch (filter) {
         case 'SHOW_ALL':
-          return todos;
+          return users;
 
         case 'SHOW_COMPLETED':
-          return todos.filter(todo => todo.completed);
+          return users.filter(user => user.completed);
 
         case 'SHOW_NEW':
-          return todos.filter(todo => !todo.completed);
+          return users.filter(user => !user.completed);
     }
 }
 
 function mapStateToProps(state) {
     return {
-        todos: getVisibleTodos(state.todos, state.filter)
+        users: getVisibleTodos(state.users, state.filter)
     };
 }

@@ -1,29 +1,20 @@
-import { createStore, combineReducers } from 'redux';
-
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from '../reducers';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import createLogger from 'redux-logger';
 
-// const createStore = (reducer) => {
-//     let state;
-//     let listeners = [];
-//
-//     const getState = () => state;
-//
-//     const dispatch = (action) => {
-//         state = reducer(state, action);
-//         listeners.forEach(listener => listener());
-//     };
-//
-//     const subscribe = (listener) => {
-//         listeners.push(listener);
-//
-//         return () => {
-//             listeners = listeners.filter(l => l !== listener);
-//         }
-//     };
-//
-//     dispatch({});
-//
-//     return { getState, dispatch, subscribe };
-// };
+const analytics = store => next => action => {
+    let result = next(action);
+    if (action.type === 'TOGGLE_USER') {
+            console.log('Sending to Google Analitics')
+    }
+    return result;
+}
 
-export default createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const logger = createLogger();
+const store = createStore(
+    rootReducer
+    , composeWithDevTools(applyMiddleware(logger, analytics))
+)
+
+export default store;

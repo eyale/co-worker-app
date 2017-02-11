@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 
 import TodoList from './TodoList.jsx';
-import AddTodo from './AddTodo.jsx';
+import AddUser from './AddUser.jsx';
 import Footer from './Footer.jsx';
 
-import styles from './TodoApp.less';
+import styles from './UserApp.less';
 
-export default class TodoApp extends Component {
+export default class UserApp extends Component {
     render() {
         return (
             <div className={styles.root}>
                 <div className={styles.container}>
-                    <h2 className={styles.header}>To do</h2>
+                    <h2 className={styles.header}>MyLo</h2>
 
                     <div className={styles.app}>
-                        <AddTodo />
-                        <TodoList />
+                        <AddUser />
                         <Footer />
+                        <TodoList />
+
                     </div>
                 </div>
             </div>
