@@ -1,14 +1,15 @@
 export const addUser = (
   name
-  , surname
-  , position
-  , team
-  , email
+  ,surname
+  ,team
+  ,position
+  ,email
 ) => ({
     type: 'ADD_USER'
     ,id: Date.now()
     ,name
     ,surname
+    ,team
     ,position
     ,email
 })

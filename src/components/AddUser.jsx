@@ -22,11 +22,11 @@ export default class AddTodo extends Component {
     }
 
     state = {
-        name: ""
-        ,surname: ""
-        ,position: ""
-        ,team: ""
-        ,email: ""
+        name: ''
+        ,surname: ''
+        ,position: ''
+        ,team: ''
+        ,email: ''
     }
 
     handleNameChange(e) {
@@ -41,7 +41,7 @@ export default class AddTodo extends Component {
     }
     handleTeamChange(e) {
       this.setState({
-        team:e.target.value
+        team: e.target.value
       })
     }
     handlePositionChange(e) {

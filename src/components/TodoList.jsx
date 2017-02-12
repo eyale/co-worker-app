@@ -17,6 +17,7 @@ export default class TodoList extends Component {
                             id={user.id}
                             name={user.name}
                             surname={user.surname}
+                            team={user.team}
                             position={user.position}
                             email={user.email}
                             completed={user.completed}

@@ -6,7 +6,7 @@ import createLogger from 'redux-logger';
 const analytics = store => next => action => {
     let result = next(action);
     if (action.type === 'TOGGLE_USER') {
-            console.log('Sending to Google Analitics')
+            // console.log('Sending to Google Analitics')
     }
     return result;
 }
