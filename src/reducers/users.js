@@ -2,11 +2,13 @@ function user(state, action) {
     switch (action.type) {
         case 'ADD_USER': {
             return {
-                id: action.id,
-                name: action.name,
-                surname: action.surname,
-                email: action.email,
-                completed: false
+                id: action.id
+                ,name: action.name
+                ,surname: action.surname
+                ,position:action.position
+                ,team: action.team
+                ,email: action.email
+                ,completed: false
             };
         }
         case 'TOGGLE_USER': {

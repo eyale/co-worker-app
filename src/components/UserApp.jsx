@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import TodoList from './TodoList.jsx';
 import AddUser from './AddUser.jsx';
 import Footer from './Footer.jsx';
+import Search from './Search.jsx'
 
 import {
   Header
@@ -10,6 +11,8 @@ import {
   ,Divider
   ,Icon
 } from 'semantic-ui-react'
+
+require('./main.less')
 
 export default class UserApp extends Component {
 
@@ -19,16 +22,18 @@ export default class UserApp extends Component {
             <Header as='h5'></Header>
               <Header
                 as='h5'
-                color='blue'
+                inverted
+                color='white'
               >
                 <Icon
                   name='users'
                   circular
-                  color='blue'
+                  color='green'
                   inverted
                 />
                   MyLo
               </Header>
+              <Search />
               <AddUser />
               <Footer />
               <TodoList />

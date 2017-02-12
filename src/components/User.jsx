@@ -9,7 +9,15 @@ import {
 
 export default class User extends Component {
     render() {
-        const { name, surname, email, completed, onToggle } = this.props;
+        const {
+          name
+          ,surname
+          ,email
+          ,team
+          ,position
+          ,completed
+          ,onToggle
+        } = this.props;
 
         return (
           <Grid
@@ -25,22 +33,22 @@ export default class User extends Component {
                   >
                     <Card.Content>
                       <Image
-                        size='small'
+                        size='tiny'
                         floated='left'
-                        src='http://semantic-ui.com/images/avatar2/large/matthew.png'
+                        src={'http://semantic-ui.com/images/avatar2/large/matthew.png'}
                       />
                       <Card.Header>
                         {`${surname} ${name}`}
                       </Card.Header>
                       <Card.Meta>
-                          {'Alabama'}
+                          {`Team: ${team}`}
                       </Card.Meta>
                       <Card.Description>
-                        {`${name} is a FrontEnd`}
+                        {`Position: ${position}`}
                       </Card.Description>
                     </Card.Content>
                     <Card.Content extra>
-                      <a><Icon name='mail' />{email}</a>
+                      <p><Icon name='mail' />{email}</p>
                     </Card.Content>
                   </Card>
                 </Card.Group>

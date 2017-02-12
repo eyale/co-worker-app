@@ -7,7 +7,6 @@ import User from './User.jsx';
 
 @connect(mapStateToProps, { toggleUser })
 export default class TodoList extends Component {
-    // what happens here ???
     render() {
         return (
             <div className="base">
@@ -18,6 +17,7 @@ export default class TodoList extends Component {
                             id={user.id}
                             name={user.name}
                             surname={user.surname}
+                            position={user.position}
                             email={user.email}
                             completed={user.completed}
                             onToggle={() => this.props.toggleUser(user.id)}
