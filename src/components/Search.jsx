@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { searchFilter } from '../actions';
+import { searchUser } from '../actions';
 
 import { Input } from 'semantic-ui-react'
 
-@connect(undefined, {searchFilter})
+@connect(mapStateToProps, mapDispatchToProps)
 
 export default class Search extends Component {
   constructor() {
@@ -17,7 +17,7 @@ export default class Search extends Component {
   }
 
   handleSearch(e) {
-    console.log(this.props);
+    this.props.onHandleSearch(e.target.value)
   }
 
   render() {
@@ -29,4 +29,18 @@ export default class Search extends Component {
         />
     )
   }
+}
+
+function mapStateToProps(state) {
+    return {
+        state: state.users.filter(user => user.name.includes(state.searchUser))
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        onHandleSearch: (name) => {
+          dispatch(searchUser(name))
+        }
+    };
 }

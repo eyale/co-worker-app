@@ -1,8 +1,7 @@
 export default function search(state = [], action) {
     switch(action.type) {
       case 'SEARCH_FILTER': {
-        console.log(state);
-        return state
+        return action.name
       }
       default:
       return state
