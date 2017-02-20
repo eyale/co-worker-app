@@ -23,8 +23,3 @@ export const setFilter = (filter) => ({
     type: 'SET_FILTER',
     filter
 })
-
-export const searchUser = (name) => ({
-    type: 'SEARCH_FILTER',
-    name
-})

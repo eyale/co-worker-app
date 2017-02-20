@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { toggleUser } from '../actions';
+import {
+  toggleUser,
+  setFilter
+} from '../actions';
 
 import User from './User.jsx';
 
@@ -30,8 +33,8 @@ export default class TodoList extends Component {
     }
 }
 
-function getVisibleTodos(users, filter) {
-    switch (filter) {
+function getVisibleTodos(users, filterUsers) {
+    switch (filterUsers) {
         case 'SHOW_ALL':
           return users;
 
@@ -40,11 +43,14 @@ function getVisibleTodos(users, filter) {
 
         case 'SHOW_NEW':
           return users.filter(user => !user.completed);
+
+        case 'SEARCH_USER':
+          return users.filter(user => user.name.includes(state.setFilter))
     }
 }
 
 function mapStateToProps(state) {
     return {
-        users: getVisibleTodos(state.users, state.filter)
+        users: getVisibleTodos(state.users, state.filterUsers)
     };
 }

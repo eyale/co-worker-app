@@ -1,46 +1,41 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { searchUser } from '../actions';
 
-import { Input } from 'semantic-ui-react'
+import { Input } from 'semantic-ui-react';
+import { setFilter } from '../actions';
 
-@connect(mapStateToProps, mapDispatchToProps)
+// @connect(mapStateToProps, mapDispatchToProps)
 
-export default class Search extends Component {
-  constructor() {
-    super();
-    this.handleSearch = this.handleSearch.bind(this);
-  }
-
-  state = {
-    searchValue: ''
-  }
+class Search extends Component {
 
   handleSearch(e) {
-    this.props.onHandleSearch(e.target.value)
+
+    this.props.onEnterValue(e.target.value);
   }
 
   render() {
+
     return (
         <Input
           label='Search employee: '
           placeholder='by name'
-          onChange={this.handleSearch}
+          onChange={this.handleSearch.bind(this)}
         />
     )
   }
 }
 
-function mapStateToProps(state) {
-    return {
-        state: state.users.filter(user => user.name.includes(state.searchUser))
-    };
-}
+const mapStateToProps = (state) => ({
+  state: state
+})
 
-function mapDispatchToProps(dispatch) {
-    return {
-        onHandleSearch: (name) => {
-          dispatch(searchUser(name))
-        }
-    };
-}
+const mapDispatchToProps = (dispatch) => (
+   {
+     onEnterValue: (value) => {
+       dispatch(setFilter(value))
+     }
+  }
+)
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Search)
